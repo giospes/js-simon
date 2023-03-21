@@ -2,3 +2,14 @@
     width: 100px;
     height: 100px;
 }
+
+.gs-square-container{
+    width: 400px;
+    height: 400px;
+}
+
+.gs-square{
+    width: calc(100% / 10) ;
+    height: calc(100% / 10);
+
+}
