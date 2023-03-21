@@ -36,12 +36,27 @@ function play(){
 
 
     const checkBtn = document.getElementById('check-btn')
-    
-    let selNumber = select(document.querySelectorAll('.gs-square'), checkBtn)
-        
+    const numIndovinatiEL= document.getElementById('num-got')
+    const numEstrattiEl= document.getElementById('num-extracted')
+
+    let selectNum = []
+
+    selectNum = select(document.querySelectorAll('.gs-square'), checkBtn)
+    console.log(selectNum) 
     checkBtn.addEventListener('click',  () => {
+        let estratti = "", counter = 0;
         selectPage.classList.add("d-none")
         checkBtn.classList.add("d-none")
+        numEstrattiEl.classList.remove('d-none')
+        numIndovinatiEL.classList.remove('d-none')
+        for(let i=0; i<rdNUM.length; i++){
+            estratti += rdNUM[i] + ' ';
+            if(rdNUM.includes(selectNum[i])){
+                counter++;
+            }
+        }
+        numEstrattiEl.innerHTML += estratti
+        numEstrattiEl.innerHTML += counter + ' '
     })
     
     
@@ -69,7 +84,7 @@ function printSquares(squareContainer){
 
 function select(sqrs, checkBtn){
     const output = document.getElementById("num-selected")
-    let counter = 0, input =[];
+    let counter = 0, input=[];
     sqrs.forEach((sqr, index) => {
         
         sqr.addEventListener('click', function(){
@@ -84,10 +99,7 @@ function select(sqrs, checkBtn){
                 return input;
             } 
         })
-        
 
     })
-
-     
 
 }
